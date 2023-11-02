@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 // connecting to mongoose
-console.log(process.env.mongodburl);
-mongoose.connect(process.env.mongodburl)
+
+mongoose.connect("mongodb+srv://singhjv11:easysapassword@cluster0.rrqcq8i.mongodb.net/habitapp?retryWrites=true&w=majority")
 .then(
     ()=>{
         console.log("database connected");
