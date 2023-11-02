@@ -1,12 +1,24 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 // connecting to mongoose
-mongoose.connect("mongodb+srv://singhjv11:959GvObKK513HvBB@cluster0.z4dujhk.mongodb.net/?retryWrites=true&w=majority");
-// mongoose database connection
-const db = mongoose.connection;
-db.on('error',console.error.bind(console,"Error connecting to MongoDb"));
+console.log(process.env.mongodburl);
+mongoose.connect(process.env.mongodburl)
+.then(
+    ()=>{
+        console.log("database connected");
+    },
+    (err)=>{
+        console.log(err);
+    }
+)
 
-db.once('open',function(){
-    console.log('Connected to Database :: MondoDB');
-});
 
-module.exports=db;
+// // mongoose database connection
+// const db = mongoose.connection;
+// db.on('error',console.error.bind(console,"Error connecting to MongoDb"));
+
+// db.once('open',function(){
+//     console.log('Connected to Database :: MondoDB');
+// });
+
+module.exports=mongoose;
